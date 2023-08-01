@@ -10,7 +10,7 @@ Helpmybuddy - An app designed to connect homeowners with trusted individuals in 
 
 - Flutter
 
-A powerful combination of technologies for building scalable applications. Node.js provides a high-performance runtime, TypeScript ensures better code quality, Express simplifies API development, and MongoDB offers flexible data storage.
+
 ## Contributing
 
 Contributions are always welcome!
