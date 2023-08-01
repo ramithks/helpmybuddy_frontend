@@ -1,16 +1,19 @@
-# helpmybuddy_frontend
 
-A new Flutter project.
+# Helpmybuddy
 
-## Getting Started
+An Helpmybuddy Frontend.
 
-This project is a starting point for a Flutter application.
+Helpmybuddy - An app designed to connect homeowners with trusted individuals in their neighborhood who can help with various chores and tasks. The app allows users to find assistance for tasks like cleaning, yard work, handyman services, academic support, delivery help, and more. All the helpers on the platform are background checked to ensure reliability and trustworthiness.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Tech Stack
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Flutter
+
+A powerful combination of technologies for building scalable applications. Node.js provides a high-performance runtime, TypeScript ensures better code quality, Express simplifies API development, and MongoDB offers flexible data storage.
+## Contributing
+
+Contributions are always welcome!
+
+Please adhere to this project's `code of conduct`.
+
