@@ -80,12 +80,7 @@ class OnbordingScreenState extends State<OnbordingScreen> {
             horizontalPadding: 40,
             onPressed: () {
               if (currentIndex == contents.length - 1) {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => const LoginScreen(),
-                  ),
-                );
+                Navigator.pushNamed(context, RoutePaths.loginRoute);
               }
               _controller.nextPage(
                 duration: const Duration(milliseconds: 100),
