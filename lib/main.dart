@@ -11,6 +11,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      onGenerateRoute: RouterNavigator.generateRoute,
+      initialRoute: RoutePaths.onBoardingRoute,
       theme: ThemeData(
           fontFamily: "CocomatPro",
           textTheme: const TextTheme(
@@ -21,7 +23,6 @@ class MyApp extends StatelessWidget {
             bodySmall: TextStyle(fontWeight: FontWeight.w500), //
           )),
       debugShowCheckedModeBanner: false,
-      home: OnbordingScreen(),
     );
   }
 }

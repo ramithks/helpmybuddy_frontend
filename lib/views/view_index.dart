@@ -5,3 +5,6 @@ export 'auth/auth_index.dart';
 
 // Onboarding module
 export 'onboarding/onboarding_index.dart';
+
+// Onboarding Main screen module
+export 'main/main_index.dart';
