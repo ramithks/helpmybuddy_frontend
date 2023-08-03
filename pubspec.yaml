@@ -1,5 +1,10 @@
 name: helpmybuddy_frontend
-description: An Helpmybuddy Frontend. Helpmybuddy - An app designed to connect homeowners with trusted individuals in their neighborhood who can help with various chores and tasks. The app allows users to find assistance for tasks like cleaning, yard work, handyman services, academic support, delivery help, and more. All the helpers on the platform are background checked to ensure reliability and trustworthiness.
+description: An Helpmybuddy Frontend. Helpmybuddy - An app designed to connect
+  homeowners with trusted individuals in their neighborhood who can help with
+  various chores and tasks. The app allows users to find assistance for tasks
+  like cleaning, yard work, handyman services, academic support, delivery help,
+  and more. All the helpers on the platform are background checked to ensure
+  reliability and trustworthiness.
 
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
@@ -9,15 +14,18 @@ environment:
   sdk: ">=3.0.3 <4.0.0"
 
 dependencies:
+  cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
   flutter_svg: ^2.0.7
+  google_sign_in: ^6.1.4
+  http: ^1.1.0
+  url_launcher: ^6.1.12
 
 dev_dependencies:
+  flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
 
 flutter:
   uses-material-design: true

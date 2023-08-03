@@ -1,4 +1,4 @@
 //Exporting main screen components
-export 'views/main_screen.dart';
+export 'views/testFetch.dart';
 
 //Exporting main screen views

@@ -4,6 +4,19 @@ import '../../../global_index.dart';
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
+  Future<void> signIn(BuildContext context) async {
+    final user = await GoogleSignInApi.login();
+
+    if (user == null) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Sign in Failed")));
+    } else {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => TestFetch(user: user)),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,6 +71,7 @@ class LoginScreen extends StatelessWidget {
                 backgroundColor: AppColors.white,
                 radius: 15,
                 verticalPadding: 15,
+                onPressed: () => signIn(context),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -77,7 +91,6 @@ class LoginScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                onPressed: () {},
               ),
               const SizedBox(height: 15),
               CustomButton(
