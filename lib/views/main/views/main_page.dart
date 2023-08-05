@@ -27,31 +27,66 @@ class _MainPageState extends State<MainPage> {
     Container(
       color: Colors.green,
     ),
-    Container(
-      color: Colors.purple,
-    ),
-    Container(
-      color: Colors.yellow,
-    ),
+    ProfileScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.thirdBg,
-        title: Text(_appBarTitles[_selectedIndex]),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: InkWell(
-              onTap: () {},
-              child: SvgIcon(
-                IconsAssets.hamburgerMenu,
-              ),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(_selectedIndex == 0 ? 70 : 60),
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(10),
             ),
-          )
-        ],
+          ),
+          backgroundColor: AppColors.thirdBg,
+          title: _selectedIndex == 0
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(top: 15.0),
+                        child: Text(_appBarTitles[_selectedIndex]),
+                      ),
+                      RichText(
+                        text: const TextSpan(
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: 'Hey',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white,
+                              ),
+                            ),
+                            TextSpan(
+                              text: ' Buddy!',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.mainFg,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ])
+              : Text(_appBarTitles[_selectedIndex]),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: InkWell(
+                onTap: () {},
+                child: SvgIcon(
+                  IconsAssets.hamburgerMenu,
+                ),
+              ),
+            )
+          ],
+        ),
       ),
       backgroundColor: AppColors.mainBg,
       body: _pages[_selectedIndex],
