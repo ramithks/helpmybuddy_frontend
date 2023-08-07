@@ -1,69 +1,65 @@
+// To parse this JSON data, do
+//
+//     final userModel = userModelFromJson(jsonString);
+
 import 'dart:convert';
 
-List<UserModel> usermodelFromJson(String str) {
-  final jsonData = json.decode(str);
-  return List<UserModel>.from(jsonData.map((user) => UserModel.fromJson(user)));
-}
+UserModel userModelFromJson(String str) => UserModel.fromJson(json.decode(str));
 
-String usermodelToJson(UserModel data) => json.encode(data.toJson());
+String userModelToJson(UserModel data) => json.encode(data.toJson());
 
 class UserModel {
-  String status;
+  String messege;
   Data data;
 
   UserModel({
-    required this.status,
+    required this.messege,
     required this.data,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-        status: json["status"],
+        messege: json["messege"],
         data: Data.fromJson(json["data"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "status": status,
+        "messege": messege,
         "data": data.toJson(),
       };
 }
 
 class Data {
   String id;
-  String googleId;
   String fullName;
   String email;
   String profileImageUrl;
-  String gender;
-  String phoneNumber;
+  String? gender;
+  String? phoneNumber;
   GeoLocation? geoLocation;
-  String address;
-  String aadharCardUrl;
-  String upiId;
-  String isEligible;
-  int v;
+  String? address;
+  String? aadharCardUrl;
+  String? upiId;
+  bool isEligible;
 
   Data({
     required this.id,
-    required this.googleId,
     required this.fullName,
     required this.email,
-    this.profileImageUrl = 'NA',
-    this.gender = 'NA',
-    this.phoneNumber = 'NA',
+    required this.profileImageUrl,
+    this.gender,
+    this.phoneNumber,
     this.geoLocation,
-    this.address = 'NA',
-    this.aadharCardUrl = 'NA',
-    this.upiId = 'NA',
+    this.address,
+    this.aadharCardUrl,
+    this.upiId,
     required this.isEligible,
-    required this.v,
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
         id: json["_id"],
-        googleId: json["googleId"],
         fullName: json["full_name"],
         email: json["email"],
-        profileImageUrl: json["profileImageUrl"] ?? 'NA',
+        profileImageUrl: json["profileImageUrl"],
         gender: json["gender"] ?? 'NA',
         phoneNumber: json["phoneNumber"] ?? 'NA',
         geoLocation: json["geoLocation"] != null
@@ -73,12 +69,10 @@ class Data {
         aadharCardUrl: json["aadharCardUrl"] ?? 'NA',
         upiId: json["upiId"] ?? 'NA',
         isEligible: json["isEligible"],
-        v: json["__v"],
       );
 
   Map<String, dynamic> toJson() => {
         "_id": id,
-        "googleId": googleId,
         "full_name": fullName,
         "email": email,
         "profileImageUrl": profileImageUrl,
@@ -89,7 +83,6 @@ class Data {
         "aadharCardUrl": aadharCardUrl,
         "upiId": upiId,
         "isEligible": isEligible,
-        "__v": v,
       };
 }
 
