@@ -19,4 +19,6 @@ class AppColors {
       const Color(0xCC000000).withOpacity(0.8); // black - 80% opacity
   static Color black70Opacity =
       const Color(0xCC000000).withOpacity(0.7); // black - 80% opacity
+  static Color orange = Colors.orange;
+  static Color red = Colors.red;
 }

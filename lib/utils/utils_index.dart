@@ -2,6 +2,7 @@
 export 'components/svg_icon.dart';
 export 'components/custom_button.dart';
 export 'components/url_launcher.dart';
+export 'components/custom_profile_image.dart';
 
 //Exporting all the enums files
 

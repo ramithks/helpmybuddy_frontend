@@ -2,8 +2,6 @@ class ClientErrorException implements Exception {
   final String message;
   final int statusCode;
 
-  
-
   ClientErrorException(this.message, this.statusCode);
 }
 

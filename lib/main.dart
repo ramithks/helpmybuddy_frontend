@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
             displayMedium: TextStyle(fontWeight: FontWeight.w700), //Bold
             bodyLarge: TextStyle(fontWeight: FontWeight.w800), //ExtraBold
             bodyMedium: TextStyle(fontStyle: FontStyle.normal), //normal
-            bodySmall: TextStyle(fontWeight: FontWeight.w500), //
+            bodySmall: TextStyle(fontWeight: FontWeight.w500), //w500
           )),
     );
   }

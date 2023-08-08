@@ -15,7 +15,9 @@ class SvgIcon extends SvgPicture {
       : super.string(
           svg,
           key: key,
-          colorFilter: color == null ? null : ColorFilter.mode(color, BlendMode.srcIn), // Use color filter
+          colorFilter: color == null
+              ? null
+              : ColorFilter.mode(color, BlendMode.srcIn), // Use color filter
           height: height,
           width: width,
           fit: iconFit,
@@ -31,7 +33,9 @@ class SvgIcon extends SvgPicture {
       : super.asset(
           svg,
           key: key,
-          colorFilter: color == null ? null : ColorFilter.mode(color, BlendMode.srcIn), // Use color filter
+          colorFilter: color == null
+              ? null
+              : ColorFilter.mode(color, BlendMode.srcIn), // Use color filter
           height: height,
           width: width,
           fit: iconFit,
