@@ -23,7 +23,7 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 30),
             Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(20),
                 color: AppColors.thirdBg,
               ),
               child: InfoTileProfile(
@@ -37,7 +37,7 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 30),
             Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(20),
                 color: AppColors.thirdBg,
               ),
               child: Column(
@@ -76,7 +76,7 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 30),
             Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(20),
                 color: AppColors.thirdBg,
               ),
               child: Column(

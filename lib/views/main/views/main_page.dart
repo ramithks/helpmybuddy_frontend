@@ -24,10 +24,8 @@ class _MainPageState extends State<MainPage> {
     Container(
       color: Colors.blue,
     ),
-    Container(
-      color: Colors.green,
-    ),
-    ProfileScreen(),
+    const CurrentTaskStatusScreen(),
+    const ProfileScreen(),
   ];
 
   @override

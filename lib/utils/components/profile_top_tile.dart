@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../global_index.dart';
+import '../../global_index.dart';
 
 class ProfileTopTile extends StatelessWidget {
   final String profileImageUrl;
