@@ -4,6 +4,7 @@ import '../../../global_index.dart';
 
 class AuthApiService {
   final customHttpService = CustomHttpService(baseUrl: ApiConstants.baseUrl);
+   final baseUri = Uri.parse('http://justpoll.app');
 
   static Future<void> saveUserData(GoogleSignInAccount user) async {
     final url =
@@ -25,6 +26,6 @@ class AuthApiService {
   }
 
   static Future<void> createNewUser(GoogleSignInAccount user) async {
-    
+
   }
 }

@@ -1,12 +1,12 @@
 class ApiConstants {
-  //Base
+  //Base url
   static String baseUrl = 'http://localhost:3000';
 
-  //user endpoint
+  //main api endpoints
   static String user = "user";
 
-  //default endpoint api Constants
-    static String create = "create";
+  //default api endpoints
+  static String create = "create";
+  static String delete = "delete";
+  static String update = "update";
 }
-
-

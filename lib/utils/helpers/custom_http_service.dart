@@ -1,4 +1,5 @@
 import 'dart:convert';
+import '../../global_index.dart';
 import 'package:http/http.dart' as http;
 
 class CustomHttpService {
@@ -35,31 +36,41 @@ class CustomHttpService {
     }
   }
 
-  Future<Map<String, dynamic>> makeRequest(String method, String endpoint,
-      {Map<String, dynamic>? data}) async {
+  Future<Map<String, dynamic>> makeSuperExtendedRequest(
+    String method,
+    String endpoint,
+    List<String> pathSegments, {
+    Map<String, dynamic>? data,
+    Map<String, String>? queryParameters,
+  }) async {
     try {
       late http.Response response;
 
+      final uri = Uri.parse('$baseUrl/$endpoint').createSuperExtendedUri(
+        pathSegments,
+        queryParameters: queryParameters,
+      );
+
       switch (method) {
         case 'GET':
-          response = await http.get(Uri.parse('$baseUrl/$endpoint'));
+          response = await http.get(uri);
           break;
         case 'POST':
           response = await http.post(
-            Uri.parse('$baseUrl/$endpoint'),
+            uri,
             body: json.encode(data),
             headers: {'Content-Type': 'application/json'},
           );
           break;
         case 'PUT':
           response = await http.put(
-            Uri.parse('$baseUrl/$endpoint'),
+            uri,
             body: json.encode(data),
             headers: {'Content-Type': 'application/json'},
           );
           break;
         case 'DELETE':
-          response = await http.delete(Uri.parse('$baseUrl/$endpoint'));
+          response = await http.delete(uri);
           break;
         default:
           throw UnsupportedMethodException('Unsupported HTTP method: $method');
