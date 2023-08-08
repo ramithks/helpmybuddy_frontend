@@ -13,11 +13,12 @@ class ProfileScreen extends StatelessWidget {
         padding: const EdgeInsets.all(25.0),
         child: Column(
           children: [
-            const ProfileTopTile(
+            ProfileTopTile(
               profileImageUrl:
                   'https://cdn.britannica.com/99/236599-050-1199AD2C/Mark-Zuckerberg-2019.jpg',
               profileName: 'Mark Zuck',
               profileSubtitle: 'Not Eligible',
+              profileSubtitleColor: AppColors.red,
             ),
             const SizedBox(height: 30),
             Container(
