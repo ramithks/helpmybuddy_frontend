@@ -80,7 +80,7 @@ class CurrentTaskStatusScreen extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const Stepperwidget(),
+            StepperWidget(),
           ],
         ),
       ),
