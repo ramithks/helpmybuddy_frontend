@@ -20,9 +20,7 @@ class _MainPageState extends State<MainPage> {
 
   final List<Widget> _pages = [
     const FetchTasksHome(),
-    Container(
-      color: AppColors.mainBg,
-    ),
+    const AskHelpHome(),
     const CurrentTaskStatusScreen(),
     const ProfileScreen(),
   ];

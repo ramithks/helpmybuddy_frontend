@@ -88,7 +88,9 @@ class TaskCard extends StatelessWidget {
                   onPressed: () {},
                 ),
                 CustomButton(
-                  radius: 10,
+                  verticalPadding: 9,
+                  horizontalPadding: 9,
+                  radius: 12,
                   child: Row(
                     children: [
                       const Column(
@@ -119,13 +121,32 @@ class TaskCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  onPressed: () {},
+                  onPressed: () => _showBottomSheet(context),
                 )
               ],
             )
           ],
         ),
       ),
+    );
+  }
+
+  void _showBottomSheet(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double desiredHeight = screenHeight * 0.97;
+
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
+      ),
+      builder: (BuildContext context) {
+        return SizedBox(
+          height: desiredHeight,
+          child: const ProvideHelpScreen(),
+        );
+      },
     );
   }
 }

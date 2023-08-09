@@ -2,3 +2,4 @@
 
 
 //Exporting ask help views
+export 'views/ask_help_home.dart';
