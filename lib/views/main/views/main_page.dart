@@ -10,6 +10,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
+
   final List<String> _appBarTitles = [
     "Help Buddy - Home",
     "Ask Help",
@@ -18,11 +19,9 @@ class _MainPageState extends State<MainPage> {
   ];
 
   final List<Widget> _pages = [
+    const FetchTasksHome(),
     Container(
       color: AppColors.mainBg,
-    ),
-    Container(
-      color: Colors.blue,
     ),
     const CurrentTaskStatusScreen(),
     const ProfileScreen(),

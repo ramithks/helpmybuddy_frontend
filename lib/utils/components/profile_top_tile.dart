@@ -32,8 +32,8 @@ class ProfileTopTile extends StatelessWidget {
             ),
             if (showEditIcon) // Conditionally show the icon based on the boolean
               Positioned(
-                top: -10,
-                right: -10,
+                top: -13,
+                right: -13,
                 child: IconButton(
                   onPressed: () {
                     // Handle edit icon tap here

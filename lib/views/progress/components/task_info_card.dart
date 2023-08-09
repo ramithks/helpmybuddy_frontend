@@ -15,54 +15,60 @@ class TaskInfoCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         color: AppColors.thirdBg,
       ),
-      child: Column(
+      child: Row(
         children: [
-          ProfileTopTile(
-            showEditIcon: false,
-            profileImageUrl:
-                'https://cdn.britannica.com/99/236599-050-1199AD2C/Mark-Zuckerberg-2019.jpg',
-            profileName: 'Mark Zuck',
-            profileSubtitle: 'Added 1 Hrs Ago',
-            profileSubtitleColor: AppColors.white50Opacity,
-          ),
-          const SizedBox(height: 10),
-          SizedBox(
-            width: MediaQuery.of(context).size.width,
-            child: Row(
+          Expanded(
+            child: Column(
               children: [
-                Expanded(
-                  child: ListTile(
-                    title: Text(
-                      titleText.length > 15
-                          ? '${titleText.substring(0, 15)}..'
-                          : titleText,
-                      style: const TextStyle(
-                        color: AppColors.white,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
+                ProfileTopTile(
+                  showEditIcon: false,
+                  profileImageUrl:
+                      'https://cdn.britannica.com/99/236599-050-1199AD2C/Mark-Zuckerberg-2019.jpg',
+                  profileName: 'Mark Zuck',
+                  profileSubtitle: 'Added 1 Hrs Ago',
+                  profileSubtitleColor: AppColors.white50Opacity,
+                ),
+                const SizedBox(height: 10),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: ListTile(
+                          title: Text(
+                            titleText.length > 15
+                                ? '${titleText.substring(0, 15)}..'
+                                : titleText,
+                            style: const TextStyle(
+                              color: AppColors.white,
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          subtitle: Text(
+                            subTitleText.length > 55
+                                ? '${subTitleText.substring(0, 55)}..'
+                                : subTitleText,
+                            style: TextStyle(
+                              color: AppColors.white50Opacity,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                    subtitle: Text(
-                      subTitleText.length > 55
-                          ? '${subTitleText.substring(0, 55)}..'
-                          : subTitleText,
-                      style: TextStyle(
-                        color: AppColors.white50Opacity,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+                    ],
                   ),
-                ),
-                InkWell(
-                  child: SvgIcon(IconsAssets.arrowTilted),
-                  onTap: () {
-                    //open the task detailed view
-                  },
-                ),
+                )
               ],
             ),
-          )
+          ),
+          InkWell(
+            child: SvgIcon(IconsAssets.arrowTilted),
+            onTap: () {
+              //open the task detailed view
+            },
+          ),
         ],
       ),
     );
