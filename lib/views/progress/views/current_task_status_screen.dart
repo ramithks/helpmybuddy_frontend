@@ -29,6 +29,7 @@ class CurrentTaskStatusScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     ProfileTopTile(
+                      showEditIcon: false,
                       profileImageUrl:
                           'https://cdn.britannica.com/99/236599-050-1199AD2C/Mark-Zuckerberg-2019.jpg',
                       profileName: 'Mark Zuck',
@@ -80,7 +81,7 @@ class CurrentTaskStatusScreen extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            StepperWidget(),
+            const StepperWidget(),
           ],
         ),
       ),
