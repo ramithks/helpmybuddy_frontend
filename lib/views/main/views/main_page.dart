@@ -77,7 +77,9 @@ class _MainPageState extends State<MainPage> {
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  _showLogoutBottomSheet(context);
+                },
                 child: SvgIcon(
                   IconsAssets.hamburgerMenu,
                 ),
@@ -132,6 +134,125 @@ class _MainPageState extends State<MainPage> {
           ],
         ),
       ),
+    );
+  }
+
+  void _showLogoutBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          decoration: const BoxDecoration(
+            color: AppColors.thirdBg,
+          ),
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              const SizedBox(height: 20),
+              CustomButton(
+                verticalPadding: 10,
+                backgroundColor: AppColors.secondaryBg,
+                radius: 10,
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return Dialog(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        child: Container(
+                          padding: const EdgeInsets.all(24.0),
+                          decoration: BoxDecoration(
+                            color: AppColors.thirdBg,
+                            borderRadius: BorderRadius.circular(12.0),
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Text(
+                                'Confirm Logout',
+                                style: TextStyle(
+                                  color: AppColors.white,
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(height: 12.0),
+                              Text(
+                                'Are you sure you want to logout?',
+                                style: TextStyle(
+                                  color: AppColors.white50Opacity,
+                                ),
+                              ),
+                              const SizedBox(height: 24.0),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  CustomButton(
+                                    backgroundColor: AppColors.opaqueColor,
+                                    child: const Text(
+                                      'Cancel',
+                                      style: TextStyle(
+                                        color: AppColors.white,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                  CustomButton(
+                                    backgroundColor: AppColors.red,
+                                    child: const Text(
+                                      'Logout',
+                                      style: TextStyle(
+                                        color: AppColors.white,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SvgIcon(
+                      IconsAssets.logOutIcon,
+                      color: AppColors.white,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    const Text(
+                      "Logout",
+                      style: TextStyle(
+                        color: AppColors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }
