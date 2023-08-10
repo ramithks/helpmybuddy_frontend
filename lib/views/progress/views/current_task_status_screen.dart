@@ -14,7 +14,7 @@ class CurrentTaskStatusScreen extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
-                BottomSheetUtils.showBottomSheet(
+                BottomSheetUtils.provideHelpAndTaskInfoBottomSheet(
                   context,
                   isGetTaskInfoPage: true,
                 );

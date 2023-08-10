@@ -66,7 +66,7 @@ class TaskInfoCard extends StatelessWidget {
           InkWell(
             child: SvgIcon(IconsAssets.arrowTilted),
             onTap: () {
-              BottomSheetUtils.showBottomSheet(
+              BottomSheetUtils.provideHelpAndTaskInfoBottomSheet(
                 context,
                 isGetTaskInfoPage: true,
               );

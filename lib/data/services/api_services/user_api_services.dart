@@ -4,7 +4,7 @@ import '../../../global_index.dart';
 
 class AuthApiService {
   final customHttpService = CustomHttpService(baseUrl: ApiConstants.baseUrl);
-   final baseUri = Uri.parse('http://justpoll.app');
+  final baseUri = Uri.parse('http://justpoll.app');
 
   static Future<void> saveUserData(GoogleSignInAccount user) async {
     final url =
@@ -12,7 +12,9 @@ class AuthApiService {
 
     final response = await http.post(
       Uri.parse(url),
-      headers: {"Content-Type": "application/json"},
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: json.encode({
         'full_name': user.displayName,
         'email': user.email,
@@ -25,7 +27,5 @@ class AuthApiService {
     }
   }
 
-  static Future<void> createNewUser(GoogleSignInAccount user) async {
-
-  }
+  static Future<void> createNewUser(GoogleSignInAccount user) async {}
 }

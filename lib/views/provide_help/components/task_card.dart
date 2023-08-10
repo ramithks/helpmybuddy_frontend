@@ -121,7 +121,9 @@ class TaskCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  onPressed: () => BottomSheetUtils.showBottomSheet(context),
+                  onPressed: () =>
+                      BottomSheetUtils.provideHelpAndTaskInfoBottomSheet(
+                          context),
                 )
               ],
             )

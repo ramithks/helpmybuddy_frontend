@@ -101,8 +101,7 @@ class _MainPageState extends State<MainPage> {
           iconSize: 30,
           onTap: (index) {
             if (index == 1) {
-              BottomSheetUtils.showBottomSheet(
-                  context); // Replace this with your bottom sheet function
+              BottomSheetUtils.askHelpBottomSheet(context);
             } else {
               setState(() {
                 _selectedIndex = index;

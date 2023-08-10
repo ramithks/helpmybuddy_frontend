@@ -5,6 +5,8 @@ export 'components/url_launcher.dart';
 export 'components/custom_profile_image.dart';
 export 'components/profile_top_tile.dart';
 export 'components/bottom_sheet_utils.dart';
+export 'components/custom_dropdown_list.dart';
+export 'components/custom_text_field.dart';
 
 //Exporting all the enums files
 
