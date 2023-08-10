@@ -21,7 +21,7 @@ class InfoTileProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        vertical: 15,
+        vertical: 8,
         horizontal: 15,
       ),
       child: SizedBox(

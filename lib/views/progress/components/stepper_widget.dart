@@ -17,8 +17,8 @@ class _StepperWidgetState extends State<StepperWidget> {
             'Task In Progress',
             style: TextStyle(color: AppColors.white),
           ),
-          content: const Row(
-            children: [],
+          content: const SizedBox(
+            height: 50,
           ),
           isActive: _currentStep == 0,
         ),
@@ -55,6 +55,12 @@ class _StepperWidgetState extends State<StepperWidget> {
   @override
   Widget build(BuildContext context) {
     return Stepper(
+      physics: const ScrollPhysics(),
+      stepIconBuilder: (index, stepState) {
+        return SvgIcon(stepState == StepState.complete
+            ? IconsAssets.profileRegular
+            : IconsAssets.paymentIcon);
+      },
       currentStep: _currentStep,
       onStepContinue: _continueButtonPressed,
       onStepCancel: _cancelButtonPressed,
