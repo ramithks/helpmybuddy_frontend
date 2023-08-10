@@ -37,7 +37,9 @@ class _ProvideHelpScreenState extends State<ProvideHelpScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             CustomBackbutton(
-              title: 'Provide Help',
+              title: widget.isGetTaskInfoPage != true
+                  ? 'Provide Help'
+                  : 'About This Task',
               onPressed: () {
                 Navigator.of(context).pop();
               },

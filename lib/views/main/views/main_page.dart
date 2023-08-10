@@ -20,7 +20,7 @@ class _MainPageState extends State<MainPage> {
 
   final List<Widget> _pages = [
     const FetchTasksHome(),
-    const AskHelpHome(),
+    Container(),
     const CurrentTaskStatusScreen(),
     const ProfileScreen(),
   ];
@@ -100,9 +100,14 @@ class _MainPageState extends State<MainPage> {
           showUnselectedLabels: false,
           iconSize: 30,
           onTap: (index) {
-            setState(() {
-              _selectedIndex = index;
-            });
+            if (index == 1) {
+              BottomSheetUtils.showBottomSheet(
+                  context); // Replace this with your bottom sheet function
+            } else {
+              setState(() {
+                _selectedIndex = index;
+              });
+            }
           },
           items: [
             BottomNavigationBarItem(
