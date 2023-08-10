@@ -22,6 +22,4 @@ class FetchTasksHome extends StatelessWidget {
       ),
     );
   }
-
-  
 }

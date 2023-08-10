@@ -121,32 +121,13 @@ class TaskCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  onPressed: () => _showBottomSheet(context),
+                  onPressed: () => BottomSheetUtils.showBottomSheet(context),
                 )
               ],
             )
           ],
         ),
       ),
-    );
-  }
-
-  void _showBottomSheet(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double desiredHeight = screenHeight * 0.97;
-
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
-      ),
-      builder: (BuildContext context) {
-        return SizedBox(
-          height: desiredHeight,
-          child: const ProvideHelpScreen(),
-        );
-      },
     );
   }
 }

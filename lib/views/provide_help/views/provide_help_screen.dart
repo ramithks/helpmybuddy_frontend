@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import '/global_index.dart';
 
 class ProvideHelpScreen extends StatefulWidget {
-  const ProvideHelpScreen({Key? key}) : super(key: key);
+  final bool? isGetTaskInfoPage;
+  const ProvideHelpScreen({
+    Key? key,
+    this.isGetTaskInfoPage = false,
+  }) : super(key: key);
 
   @override
   State<ProvideHelpScreen> createState() => _ProvideHelpScreenState();
@@ -119,62 +123,66 @@ class _ProvideHelpScreenState extends State<ProvideHelpScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            const CustomInfo(
+            CustomInfo(
               titleTextSize: 18,
               subTitleTextSize: 10,
               titleText: 'You will Earn : ₹299',
-              subTitleText:
-                  'We will transfer your earnings to your UPI ID once the total earnings are greater than ₹3000',
+              subTitleText: widget.isGetTaskInfoPage != true
+                  ? "We will transfer your earnings to your UPI ID once the total earnings are greater than ₹3000."
+                  : "We will transfer your earnings to your UPI ID once the total earnings are greater than ₹3000.",
             ),
             const SizedBox(height: 15),
-            Row(
-              children: [
-                Checkbox(
-                  checkColor: AppColors.white,
-                  hoverColor: AppColors.black,
-                  value: _isPolicyAccepted,
-                  onChanged: (value) {
-                    setState(() {
-                      _isPolicyAccepted = value!;
-                    });
-                  },
-                ),
-                const Text(
-                  'I accept the Privacy Policy',
-                  style: TextStyle(
-                    color: AppColors.white,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 15,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 15),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: CustomButton(
-                    radius: 15,
-                    verticalPadding: 15,
-                    horizontalPadding: 15,
-                    child: const Text(
-                      textAlign: TextAlign.center,
-                      "Confirm Providing Help",
-                      style: TextStyle(
-                        color: AppColors.white,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 15,
+            widget.isGetTaskInfoPage != true
+                ? Row(
+                    children: [
+                      Checkbox(
+                        checkColor: AppColors.white,
+                        value: _isPolicyAccepted,
+                        onChanged: (value) {
+                          setState(() {
+                            _isPolicyAccepted = value!;
+                          });
+                        },
                       ),
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ),
-              ],
-            )
+                      Text(
+                        'I accept the Privacy Policy',
+                        style: TextStyle(
+                          color: AppColors.white50Opacity,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 17,
+                        ),
+                      ),
+                    ],
+                  )
+                : Container(),
+            const SizedBox(height: 15),
+            widget.isGetTaskInfoPage != true
+                ? Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: CustomButton(
+                          radius: 15,
+                          verticalPadding: 15,
+                          horizontalPadding: 15,
+                          child: const Text(
+                            textAlign: TextAlign.center,
+                            "Confirm Providing Help",
+                            style: TextStyle(
+                              color: AppColors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 15,
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
+                    ],
+                  )
+                : Container(),
           ],
         ),
       ),
