@@ -40,6 +40,7 @@ class CustomHttpService {
     String method,
     String endpoint,
     List<String> pathSegments, {
+    String? token,
     Map<String, dynamic>? data,
     Map<String, String>? queryParameters,
   }) async {
@@ -53,24 +54,36 @@ class CustomHttpService {
 
       switch (method) {
         case 'GET':
-          response = await http.get(uri);
+          response = await http.get(
+            uri,
+            headers: token != null ? {'Authorization': 'Bearer $token'} : null,
+          );
           break;
         case 'POST':
           response = await http.post(
             uri,
             body: json.encode(data),
-            headers: {'Content-Type': 'application/json'},
+            headers: {
+              'Content-Type': 'application/json',
+              if (token != null) 'Authorization': 'Bearer $token'
+            },
           );
           break;
         case 'PUT':
           response = await http.put(
             uri,
             body: json.encode(data),
-            headers: {'Content-Type': 'application/json'},
+            headers: {
+              'Content-Type': 'application/json',
+              if (token != null) 'Authorization': 'Bearer $token'
+            },
           );
           break;
         case 'DELETE':
-          response = await http.delete(uri);
+          response = await http.delete(
+            uri,
+            headers: token != null ? {'Authorization': 'Bearer $token'} : null,
+          );
           break;
         default:
           throw UnsupportedMethodException('Unsupported HTTP method: $method');
