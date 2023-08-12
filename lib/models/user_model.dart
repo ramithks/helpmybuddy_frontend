@@ -1,7 +1,6 @@
 // To parse this JSON data, do
 //
 //     final userModel = userModelFromJson(jsonString);
-
 import 'dart:convert';
 
 UserModel userModelFromJson(String str) => UserModel.fromJson(json.decode(str));
@@ -9,76 +8,73 @@ UserModel userModelFromJson(String str) => UserModel.fromJson(json.decode(str));
 String userModelToJson(UserModel data) => json.encode(data.toJson());
 
 class UserModel {
-  String messege;
   Data data;
 
   UserModel({
-    required this.messege,
     required this.data,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-        messege: json["messege"],
         data: Data.fromJson(json["data"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "messege": messege,
         "data": data.toJson(),
       };
 }
 
 class Data {
-  String id;
+  bool isAdmin;
   String fullName;
   String email;
   String profileImageUrl;
-  String? gender;
-  String? phoneNumber;
-  GeoLocation? geoLocation;
-  String? address;
-  String? aadharCardUrl;
-  String? upiId;
+  String gender;
+  String phoneNumber;
+  GeoLocation? geoLocation; // Make geoLocation nullable
+  String address;
+  String aadharCardUrl;
+  String upiId;
   bool isEligible;
 
   Data({
-    required this.id,
+    required this.isAdmin,
     required this.fullName,
     required this.email,
     required this.profileImageUrl,
-    this.gender,
-    this.phoneNumber,
+    required this.gender,
+    required this.phoneNumber,
     this.geoLocation,
-    this.address,
-    this.aadharCardUrl,
-    this.upiId,
+    required this.address,
+    required this.aadharCardUrl,
+    required this.upiId,
     required this.isEligible,
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-        id: json["_id"],
+        isAdmin: json["isAdmin"],
         fullName: json["full_name"],
         email: json["email"],
         profileImageUrl: json["profileImageUrl"],
-        gender: json["gender"] ?? 'NA',
-        phoneNumber: json["phoneNumber"] ?? 'NA',
+        gender: json["gender"],
+        phoneNumber: json["phoneNumber"] ?? "NA", // Set default value "NA"
         geoLocation: json["geoLocation"] != null
             ? GeoLocation.fromJson(json["geoLocation"])
-            : null,
-        address: json["address"] ?? 'NA',
-        aadharCardUrl: json["aadharCardUrl"] ?? 'NA',
-        upiId: json["upiId"] ?? 'NA',
+            : GeoLocation(
+                latitude: "NA", longitude: "NA"), // Set default value "NA"
+        address: json["address"] ?? "NA", // Set default value "NA"
+        aadharCardUrl: json["aadharCardUrl"] ?? "NA", // Set default value "NA"
+        upiId: json["upiId"] ?? "NA", // Set default value "NA"
         isEligible: json["isEligible"],
       );
 
   Map<String, dynamic> toJson() => {
-        "_id": id,
+        "isAdmin": isAdmin,
         "full_name": fullName,
         "email": email,
         "profileImageUrl": profileImageUrl,
         "gender": gender,
         "phoneNumber": phoneNumber,
-        "geoLocation": geoLocation?.toJson(),
+        "geoLocation": geoLocation?.toJson(), // Convert to JSON if not null
         "address": address,
         "aadharCardUrl": aadharCardUrl,
         "upiId": upiId,
@@ -96,8 +92,8 @@ class GeoLocation {
   });
 
   factory GeoLocation.fromJson(Map<String, dynamic> json) => GeoLocation(
-        latitude: json["latitude"],
-        longitude: json["longitude"],
+        latitude: json["latitude"] ?? "NA", // Set default value "NA"
+        longitude: json["longitude"] ?? "NA", // Set default value "NA"
       );
 
   Map<String, dynamic> toJson() => {

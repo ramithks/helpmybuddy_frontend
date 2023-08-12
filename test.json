@@ -1,0 +1,18 @@
+{
+"data":{
+        "isAdmin": false,
+        "full_name": "John Doe",
+        "email": "johndoe@example.com",
+        "profileImageUrl": "https://example.com/profile.jpg",
+        "gender": "Male",
+        "phoneNumber": "123-456-7890",
+        "geoLocation": {
+          "latitude": "37.7749",
+          "longitude": "-122.4194"
+        },
+        "address": "123 Main Street, City",
+        "aadharCardUrl": "https://example.com/aadhar.jpg",
+        "upiId": "johndoe@upi",
+        "isEligible": true
+      }
+    }
