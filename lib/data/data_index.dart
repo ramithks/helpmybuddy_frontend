@@ -6,7 +6,7 @@ export 'exceptions/general_exceptions.dart';
 export 'local/cache_manager.dart';
 
 //Exporting services/api_services files
-export 'services/api_services/user_api_services.dart';
+export 'services/api_services/aut_api_service.dart';
 
 //Exporting services/config_services files
 export 'services/config_services/google_signin_api.dart';
