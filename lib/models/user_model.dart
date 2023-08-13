@@ -24,30 +24,30 @@ class UserModel {
 }
 
 class Data {
-  bool isAdmin;
+  bool? isAdmin;
   String fullName;
   String email;
   String profileImageUrl;
-  String gender;
-  String phoneNumber;
-  GeoLocation? geoLocation; // Make geoLocation nullable
-  String address;
-  String aadharCardUrl;
-  String upiId;
-  bool isEligible;
+  String? gender;
+  String? phoneNumber;
+  GeoLocation? geoLocation;
+  String? address;
+  String? aadharCardUrl;
+  String? upiId;
+  bool? isEligible;
 
   Data({
-    required this.isAdmin,
+    this.isAdmin,
     required this.fullName,
     required this.email,
     required this.profileImageUrl,
-    required this.gender,
-    required this.phoneNumber,
+    this.gender,
+    this.phoneNumber,
     this.geoLocation,
-    required this.address,
-    required this.aadharCardUrl,
-    required this.upiId,
-    required this.isEligible,
+    this.address,
+    this.aadharCardUrl,
+    this.upiId,
+    this.isEligible,
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(

@@ -44,13 +44,10 @@ class CustomHttpService {
     Map<String, dynamic>? data,
     Map<String, String>? queryParameters,
   }) async {
-    try {
+
       late http.Response response;
 
-      final uri = Uri.parse('$baseUrl/$endpoint').createSuperExtendedUri(
-        pathSegments,
-        queryParameters: queryParameters,
-      );
+      final uri = Uri.parse('$baseUrl/$endpoint${pathSegments.join('/')}');
 
       switch (method) {
         case 'GET':
@@ -90,8 +87,6 @@ class CustomHttpService {
       }
 
       return await _handleResponse(response);
-    } catch (e) {
-      throw NetworkException('Network error: $e');
-    }
+  
   }
 }

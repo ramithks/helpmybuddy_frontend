@@ -1,21 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../global_index.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  final AuthApiService _authApiService = AuthApiService();
 
-  Future<void> signIn(BuildContext context) async {
-    final user = await GoogleSignInApi.login();
-
-    if (user == null) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Sign in Failed")));
-    } else {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => TestFetch(user: user)),
-      );
-    }
-  }
+  LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +61,13 @@ class LoginScreen extends StatelessWidget {
                 backgroundColor: AppColors.white,
                 radius: 15,
                 verticalPadding: 15,
-                onPressed: () => signIn(context),
+                onPressed: () async {
+                  var result = await _authApiService.createNewUser();
+                  // Do something with the result
+                  if (kDebugMode) {
+                    print(result);
+                  }
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -93,6 +89,8 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 15),
+
+              /*
               CustomButton(
                 backgroundColor: AppColors.thirdBg,
                 radius: 15,
@@ -122,6 +120,8 @@ class LoginScreen extends StatelessWidget {
                   // Inside a function or widget
                 },
               ),
+
+              */
             ],
           ),
         ),
