@@ -116,7 +116,15 @@ class LoginScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  // Inside a function or widget
+                  SnackbarUtils.showSnackbar(
+                    context: context,
+                    actionLabel: 'Okay',
+                    type: SnackbarType.error,
+                    actionOnPressed: () {},
+                  );
+                },
               ),
             ],
           ),

@@ -6,7 +6,7 @@ class AuthApiService {
 
   Future<void> createNewUser(GoogleSignInAccount user) async {
     try {
-      const endpoint = 'user/create';
+      final pathSegments = [ApiConstants.user, ApiConstants.create];
 
       final requestBody = {
         'full_name': user.displayName,
@@ -16,8 +16,8 @@ class AuthApiService {
 
       final response = await customHttpService.makeSuperExtendedRequest(
         'POST', // HTTP method
-        endpoint, // Endpoint path
-        [], // No path segments needed in this case
+        '', // Endpoint path
+        pathSegments, // No path segments needed in this case
         data: requestBody, // Request body
       );
 
