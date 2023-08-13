@@ -4,26 +4,30 @@ import '../../../global_index.dart';
 class AuthApiService {
   final customHttpService = CustomHttpService(baseUrl: ApiConstants.baseUrl);
 
-  Future<void> createNewUser(GoogleSignInAccount user) async {
+  Future<void> createNewUser() async {
     try {
-      final pathSegments = [ApiConstants.user, ApiConstants.create];
+      final user = await GoogleSignInApi.login(); // Retrieve user information
 
-      final requestBody = {
-        'full_name': user.displayName,
-        'email': user.email,
-        'profileImageUrl': user.photoUrl
-      };
+      if (user != null) {
+        final pathSegments = [ApiConstants.user, ApiConstants.create];
 
-      final response = await customHttpService.makeSuperExtendedRequest(
-        'POST', // HTTP method
-        '', // Endpoint path
-        pathSegments, // No path segments needed in this case
-        data: requestBody, // Request body
-      );
+        final requestBody = {
+          'full_name': user.displayName,
+          'email': user.email,
+          'profileImageUrl': user.photoUrl
+        };
 
-      if (kDebugMode) {
-        print(response);
-      } // Handle the response as needed
+        final response = await customHttpService.makeSuperExtendedRequest(
+          'POST', // HTTP method
+          '', // Endpoint path
+          pathSegments, // No path segments needed in this case
+          data: requestBody, // Request body
+        );
+
+        if (kDebugMode) {
+          print(response);
+        } // Handle the response as needed
+      }
     } catch (error) {
       if (kDebugMode) {
         print('Error: $error');
