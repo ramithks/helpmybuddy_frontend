@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../global_index.dart';
+import '../../main.dart';
 
 class SnackbarUtils {
   static Color _getColor(SnackbarType type) {
@@ -29,17 +30,15 @@ class SnackbarUtils {
   }
 
   static void showSnackbar({
-    required BuildContext context,
     String message = 'something went wrong',
     SnackbarType? type, // Nullable SnackbarType
     Duration duration = const Duration(seconds: 3),
     String? actionLabel,
     VoidCallback? actionOnPressed,
   }) {
-    // If type is not provided, default to SnackbarType.generic
     final resolvedType = type ?? SnackbarType.generic;
 
-    ScaffoldMessenger.of(context).showSnackBar(
+    scaffoldMessengerKey.currentState?.showSnackBar(
       SnackBar(
         content: Row(
           children: [

@@ -117,6 +117,8 @@ class LoginScreen extends StatelessWidget {
                   ],
                 ),
                 onPressed: () {
+                  SnackbarUtils.showSnackbar(
+                      type: SnackbarType.error, message: 'Sign in Failed');
                   // Inside a function or widget
                 },
               ),

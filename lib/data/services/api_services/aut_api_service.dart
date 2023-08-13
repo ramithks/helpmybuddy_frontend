@@ -6,7 +6,7 @@ class AuthApiService {
 
   Future<void> createNewUser() async {
     try {
-      final user = await GoogleSignInApi.login(); // Retrieve user information
+      final user = await GoogleSignInApi.login();
 
       if (user != null) {
         final pathSegments = [ApiConstants.user, ApiConstants.create];
@@ -18,20 +18,25 @@ class AuthApiService {
         };
 
         final response = await customHttpService.makeSuperExtendedRequest(
-          'POST', // HTTP method
-          '', // Endpoint path
-          pathSegments, // No path segments needed in this case
-          data: requestBody, // Request body
+          'POST',
+          '',
+          pathSegments,
+          data: requestBody,
         );
 
         if (kDebugMode) {
           print(response);
-        } // Handle the response as needed
+        }
+      } else {
+        SnackbarUtils.showSnackbar(
+          type: SnackbarType.error,
+          message: 'Sign in Failed',
+        );
       }
     } catch (error) {
       if (kDebugMode) {
         print('Error: $error');
-      } // Handle the error
+      }
     }
   }
 }
