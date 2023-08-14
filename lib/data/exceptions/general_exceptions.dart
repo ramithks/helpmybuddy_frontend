@@ -1,41 +1,31 @@
-class GeneralException implements Exception {
-  final String message;
+import 'package:dio/dio.dart';
 
-  GeneralException(this.message);
+class GeneralException extends DioException {
+  GeneralException(String message)
+      : super(requestOptions: RequestOptions(path: ''), error: message);
 }
 
-class DatabaseException implements Exception {
-  final String message;
-
-  DatabaseException(this.message);
+class DatabaseException extends DioException {
+  DatabaseException(String message)
+      : super(requestOptions: RequestOptions(path: ''), error: message);
 }
 
-class ValidationException implements Exception {
-  final String message;
-
-  ValidationException(this.message);
+class ValidationException extends DioException {
+  ValidationException(String message)
+      : super(requestOptions: RequestOptions(path: ''), error: message);
 }
 
-class FileOperationException implements Exception {
-  final String message;
-
-  FileOperationException(this.message);
+class FileOperationException extends DioException {
+  FileOperationException(String message)
+      : super(requestOptions: RequestOptions(path: ''), error: message);
 }
 
-class ConfigurationException implements Exception {
-  final String message;
-
-  ConfigurationException(this.message);
+class ConfigurationException extends DioException {
+  ConfigurationException(String message)
+      : super(requestOptions: RequestOptions(path: ''), error: message);
 }
 
-class ServiceUnavailableException implements Exception {
-  final String message;
-
-  ServiceUnavailableException(this.message);
-}
-
-class PermissionDeniedException implements Exception {
-  final String message;
-
-  PermissionDeniedException(this.message);
+class ServiceUnavailableException extends DioException {
+  ServiceUnavailableException(String message)
+      : super(requestOptions: RequestOptions(path: ''), error: message);
 }

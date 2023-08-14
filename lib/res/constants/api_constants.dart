@@ -1,6 +1,6 @@
 class ApiConstants {
   //Base url
-  static String baseUrl = 'http://localhost:3000';
+  static String baseUrl = 'http://192.168.1.3:3000';
 
   //main api endpoints
   static String user = "user";

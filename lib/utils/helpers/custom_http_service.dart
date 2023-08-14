@@ -1,40 +1,13 @@
-import 'dart:convert';
+import 'package:dio/dio.dart';
+
 import '../../global_index.dart';
-import 'package:http/http.dart' as http;
 
 class CustomHttpService {
   final String baseUrl;
+  final Dio _dio;
 
-  CustomHttpService({required this.baseUrl});
-
-  Future<Map<String, dynamic>> _handleResponse(http.Response response) async {
-    final responseBody = response.body;
-    final statusCode = response.statusCode;
-
-    switch (statusCode) {
-      case 200:
-        if (responseBody.isNotEmpty) {
-          return json.decode(responseBody);
-        } else {
-          return {};
-        }
-      case 201:
-        // Handle successful creation
-        return {};
-      case 400:
-        throw ClientErrorException('Bad request', statusCode);
-      case 401:
-        throw AuthenticationException('Unauthorized', statusCode);
-      case 403:
-        throw AuthorizationException('Forbidden', statusCode);
-      case 404:
-        throw NotFoundException('Not found', statusCode);
-      case 500:
-        throw ServerErrorException('Internal server error', statusCode);
-      default:
-        throw Exception('Unexpected error: $statusCode');
-    }
-  }
+  CustomHttpService({required this.baseUrl})
+      : _dio = Dio(BaseOptions(baseUrl: baseUrl));
 
   Future<Map<String, dynamic>> makeSuperExtendedRequest(
     String method,
@@ -42,51 +15,68 @@ class CustomHttpService {
     List<String> pathSegments, {
     String? token,
     Map<String, dynamic>? data,
-    Map<String, String>? queryParameters,
+    Map<String, dynamic>? queryParameters,
   }) async {
+    late Response<Map<String, dynamic>> response;
 
-      late http.Response response;
+    final uri = Uri.parse('$baseUrl/$endpoint${pathSegments.join('/')}');
 
-      final uri = Uri.parse('$baseUrl/$endpoint${pathSegments.join('/')}');
-
+    try {
       switch (method) {
         case 'GET':
-          response = await http.get(
-            uri,
-            headers: token != null ? {'Authorization': 'Bearer $token'} : null,
+          response = await _dio.get<Map<String, dynamic>>(
+            uri.toString(),
+            options: Options(
+                headers:
+                    token != null ? {'Authorization': 'Bearer $token'} : null),
           );
           break;
         case 'POST':
-          response = await http.post(
-            uri,
-            body: json.encode(data),
-            headers: {
-              'Content-Type': 'application/json',
-              if (token != null) 'Authorization': 'Bearer $token'
-            },
+          response = await _dio.post<Map<String, dynamic>>(
+            uri.toString(),
+            data: data,
+            options: Options(
+              headers: {
+                'Content-Type': 'application/json',
+                if (token != null) 'Authorization': 'Bearer $token'
+              },
+            ),
           );
           break;
         case 'PUT':
-          response = await http.put(
-            uri,
-            body: json.encode(data),
-            headers: {
-              'Content-Type': 'application/json',
-              if (token != null) 'Authorization': 'Bearer $token'
-            },
+          response = await _dio.put<Map<String, dynamic>>(
+            uri.toString(),
+            data: data,
+            options: Options(
+              headers: {
+                'Content-Type': 'application/json',
+                if (token != null) 'Authorization': 'Bearer $token'
+              },
+            ),
           );
           break;
         case 'DELETE':
-          response = await http.delete(
-            uri,
-            headers: token != null ? {'Authorization': 'Bearer $token'} : null,
+          response = await _dio.delete<Map<String, dynamic>>(
+            uri.toString(),
+            options: Options(
+                headers:
+                    token != null ? {'Authorization': 'Bearer $token'} : null),
           );
           break;
         default:
           throw UnsupportedMethodException('Unsupported HTTP method: $method');
       }
+    } on DioException catch (e) {
+      if (e.response != null) {
+        final statusCode =
+            e.response!.statusCode ?? -1; // Default value in case it's null
+        throw CustomHttpException(
+            e.response!.data['message'] ?? 'HTTP Error', statusCode);
+      } else {
+        throw NetworkException('Network error: $e');
+      }
+    }
 
-      return await _handleResponse(response);
-  
+    return response.data!;
   }
 }
