@@ -1,1 +1,7 @@
-enum SnackbarType { generic, error, warning, info }
+enum SnackbarType {
+  generic,
+  error,
+  warning,
+  info,
+  success,
+}

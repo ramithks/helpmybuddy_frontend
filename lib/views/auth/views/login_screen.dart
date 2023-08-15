@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../global_index.dart';
 
@@ -61,12 +60,8 @@ class LoginScreen extends StatelessWidget {
                 backgroundColor: AppColors.white,
                 radius: 15,
                 verticalPadding: 15,
-                onPressed: () async {
-                  var result = await _authApiService.createNewUser();
-                  // Do something with the result
-                  if (kDebugMode) {
-                    print(result);
-                  }
+                onPressed: () {
+                  _authApiService.createNewUser();
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

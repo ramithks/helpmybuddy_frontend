@@ -27,14 +27,14 @@ class AuthApiService {
         print(response);
       }
 
-      // // Parse and return token and user data
-      // if (response['token'] is String && response['token'] != '') {
-      //   final userModel = UserModel.fromJson(response['data']);
-      //   return {'token': response['token'], 'user': userModel};
-      // } else {
-      //   throw Exception('Failed to create user');
-      // }
-      return requestBody;
+      // Parse and return token and user data
+      if (response['token'] is String && response['token'] != '') {
+        final userModel = UserModel.fromJson(response['data']);
+        return {'token': response['token'], 'user': userModel};
+      } else {
+        throw Exception('Failed to create user');
+      }
+      //return requestBody;
     } else {
       SnackbarUtils.showSnackbar(
         type: SnackbarType.error,

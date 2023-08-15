@@ -11,6 +11,8 @@ class SnackbarUtils {
         return AppColors.orange;
       case SnackbarType.info:
         return AppColors.blue;
+      case SnackbarType.success:
+        return AppColors.green;
       default:
         return Colors.grey;
     }
@@ -24,6 +26,8 @@ class SnackbarUtils {
         return Icons.warning;
       case SnackbarType.info:
         return Icons.info;
+      case SnackbarType.success:
+        return Icons.check_circle;
       default:
         return Icons.info_outline;
     }
