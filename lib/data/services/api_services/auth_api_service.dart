@@ -1,10 +1,11 @@
 import 'package:flutter/foundation.dart';
+
 import '../../../global_index.dart';
 
 class AuthApiService {
   final customHttpService = CustomHttpService(baseUrl: ApiConstants.baseUrl);
 
-  Future<Map<String, dynamic>> createNewUser() async {
+  Future<UserModel> createNewUser() async {
     final user = await GoogleSignInApi.login();
 
     if (user != null) {
@@ -29,12 +30,12 @@ class AuthApiService {
 
       // Parse and return token and user data
       if (response['token'] is String && response['token'] != '') {
-        final userModel = UserModel.fromJson(response['data']);
-        return {'token': response['token'], 'user': userModel};
+        final userModel = UserModel.fromJson(response);
+        return userModel;
       } else {
         throw Exception('Failed to create user');
       }
-      //return requestBody;
+      // return requestBody;
     } else {
       SnackbarUtils.showSnackbar(
         type: SnackbarType.error,

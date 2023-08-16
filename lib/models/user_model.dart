@@ -8,18 +8,22 @@ UserModel userModelFromJson(String str) => UserModel.fromJson(json.decode(str));
 String userModelToJson(UserModel data) => json.encode(data.toJson());
 
 class UserModel {
-  Data data;
+  final String token;
+  final Data data;
 
   UserModel({
     required this.data,
+    required this.token,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
         data: Data.fromJson(json["data"]),
+        token: json['token']
       );
 
   Map<String, dynamic> toJson() => {
         "data": data.toJson(),
+        'token': token
       };
 }
 
@@ -51,20 +55,19 @@ class Data {
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-        isAdmin: json["isAdmin"],
-        fullName: json["full_name"],
-        email: json["email"],
-        profileImageUrl: json["profileImageUrl"],
-        gender: json["gender"],
-        phoneNumber: json["phoneNumber"] ?? "NA", // Set default value "NA"
+        isAdmin: json["isAdmin"] ?? false, // Default to false
+        fullName: json["full_name"] ?? "NA", // Default to "NA"
+        email: json["email"] ?? "NA", // Default to "NA"
+        profileImageUrl: json["profileImageUrl"] ?? "NA", // Default to "NA"
+        gender: json["gender"] ?? "NA", // Default to "NA"
+        phoneNumber: json["phoneNumber"] ?? "NA", // Default to "NA"
         geoLocation: json["geoLocation"] != null
             ? GeoLocation.fromJson(json["geoLocation"])
-            : GeoLocation(
-                latitude: "NA", longitude: "NA"), // Set default value "NA"
-        address: json["address"] ?? "NA", // Set default value "NA"
-        aadharCardUrl: json["aadharCardUrl"] ?? "NA", // Set default value "NA"
-        upiId: json["upiId"] ?? "NA", // Set default value "NA"
-        isEligible: json["isEligible"],
+            : null,
+        address: json["address"] ?? "NA",
+        aadharCardUrl: json["aadharCardUrl"] ?? "NA",
+        upiId: json["upiId"] ?? "NA",
+        isEligible: json["isEligible"] ?? false, // Default to false
       );
 
   Map<String, dynamic> toJson() => {

@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
+
 import '../../../global_index.dart';
 
 class LoginScreen extends StatelessWidget {
   final AuthApiService _authApiService = AuthApiService();
+
+  attemptUserCreation() async {
+    AuthApiService authService = AuthApiService();
+    try {
+      var result = await authService.createNewUser();
+
+      print(result
+          .token); // Now you're printing the result of createNewUser function
+    } catch (e) {
+      print(e); // If there was an error, print it
+    }
+  }
 
   LoginScreen({Key? key}) : super(key: key);
 
@@ -60,8 +73,8 @@ class LoginScreen extends StatelessWidget {
                 backgroundColor: AppColors.white,
                 radius: 15,
                 verticalPadding: 15,
-                onPressed: () {
-                  _authApiService.createNewUser();
+                onPressed: () async {
+                  attemptUserCreation();
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
